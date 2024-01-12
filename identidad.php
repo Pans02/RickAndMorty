@@ -84,7 +84,7 @@ if ($resultado_ultimo_registro->num_rows > 0) {
                 </div>
                 <div class="texto">
                     <?php
-                    // Verifica si hay filas en el resultado
+
                     if ($resultado_ultimo_registro->num_rows > 0) {
                         ?>
                         <h3>Informacion de:<?php echo " " . $datos_cerebro['usuario'] . "   "; ?></h3><br>
@@ -103,7 +103,7 @@ if ($resultado_ultimo_registro->num_rows > 0) {
             </div>
 
             <?php
-            // Verifica el rol y luego imprime el botón correspondiente
+
             if ($datos_cerebro['rol'] == 'RICK') {
                 echo '<a href="index_rick.php" style="margin: 0px 0px 100px 700px;">Volver al inicio</a>';
             } elseif ($datos_cerebro['rol'] == 'MORTY') {
