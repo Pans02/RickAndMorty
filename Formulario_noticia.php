@@ -88,11 +88,11 @@
                             $resultado_cerebro = mysqli_query($conexion, $sql_cerebro);
 
                             if ($resultado_cerebro->num_rows > 0) {
-                                while ($cerebro_registro = $resultado_cerebro->fetch_assoc()) {
+                                if($cerebro_registro = $resultado_cerebro->fetch_assoc()) {
                                     if ($cerebro_registro["rol"] == "MORTY") {
                                         echo "<a href='index_morty.php' style='margin:0px 0px 0px 240px'>Volver al Inicio</a>";
                                     } else {
-                                        echo "<a href='index_rick.php'>Volver al Inicio</a>";
+                                        echo "<a href='index_rick.php' style='margin:0px 0px 0px 240px'>Volver al Inicio</a>";
                                     }
                                 }
                             }
