@@ -22,11 +22,10 @@
             background-position: center center;
         }
 
-        /* Agregamos estilos para el textarea */
         textarea.form-control {
             height: auto;
-            min-height: 100px; /* Establecer una altura mínima */
-            resize: vertical; /* Permitir que el usuario cambie la altura verticalmente */
+            min-height: 100px; 
+            resize: vertical; 
         }
     </style>
 
@@ -71,7 +70,6 @@
 require_once("conn_ciudadela.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifica si las claves existen en el array $_POST antes de intentar acceder a ellas
     $id = isset($_POST["numero"]) ? $_POST["numero"] : "";
 
     if (!empty($id)) {
