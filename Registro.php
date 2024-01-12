@@ -131,69 +131,72 @@
                 ?>
             </div>
         </div>
+        <?php
+        require_once("conn_ciudadela.php");
+        global $conexion;
+
+        // Procesar el formulario si se ha enviado
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $rut = $_POST["rut"];
+            $nombre = $_POST["nombre"];
+            $apellido = $_POST["apellido"];
+            $fecha_nacimiento = $_POST["f_nacimiento"];
+            $telefono = $_POST["telefono"];
+            $mail = $_POST["mail"];
+            $usuario = $_POST["usuario"];
+            $contraseña = $_POST["password"];
+            $foto = $_FILES["foto"];
+            $adicional = $_POST["adicional"];
+            $personaje = $_POST["personaje"];
+            $fechaActual = new DateTime();
+            $fechaActual = $fechaActual->format('Y-m-d');
+
+            // Llamar a la función verificar antes de procesar el formulario
+            if (!verificar($usuario)) {
+                echo "<h5 style='color:red;margin:0px 0px 0px 700px'>Error: Este Usuario ya Existe</h5>";
+            } elseif (!empty($rut) && !empty($nombre) && !empty($apellido) && !empty($fecha_nacimiento) && !empty($telefono) && !empty($mail) && !empty($usuario) && !empty($contraseña) && !empty($foto) && !empty($adicional) && !empty($personaje)) {
+                // Resto del código para procesar el formulario e insertar en la base de datos
+                $archivo_nuevo = subir_archivo($foto);
+
+                if (!verificar_rut($rut) || $fecha_nacimiento > $fechaActual) {
+                    echo "<h5 style='color:red;'>ERROR en la Información </h5>";
+                } else {
+                    if (crear_persona($rut, $nombre, $apellido, $fecha_nacimiento, $telefono, $mail, $usuario, $contraseña, $archivo_nuevo, $adicional, $personaje)) {
+                        echo "<meta http-equiv='refresh' content='0;url=index.php'>";
+                        exit();
+                    } else {
+                        echo "<p style='color:red;'>Error al registrar la persona</p>";
+                    }
+                }
+            }
+        }
+?>
     </div>
 </body>
 </html>
 
 <?php
-require_once("conn_ciudadela.php");
-global $conexion;
 
-// Procesar el formulario si se ha enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $rut = $_POST["rut"];
-    $nombre = $_POST["nombre"];
-    $apellido = $_POST["apellido"];
-    $fecha_nacimiento = $_POST["f_nacimiento"];
-    $telefono = $_POST["telefono"];
-    $mail = $_POST["mail"];
-    $usuario = $_POST["usuario"];
-    $contraseña = $_POST["password"];
-    $foto = $_FILES["foto"];
-    $adicional = $_POST["adicional"];
-    $personaje = $_POST["personaje"];
-    $fechaActual = new DateTime();
-    $fechaActual = $fechaActual->format('Y-m-d');
-    $archivo_nuevo = subir_archivo($foto);
+function verificar($usuario) {
+    require_once("conn_ciudadela.php");
+    global $conexion;
 
-    verificar();
-    if (!empty($rut) && !empty($nombre) && !empty($apellido) && !empty($fecha_nacimiento) && !empty($telefono) && !empty($mail) && !empty($usuario) && !empty($contraseña) && !empty($archivo_nuevo) && !empty($adicional) && !empty($personaje)) {
-        if (!verificar_rut($rut) || $fecha_nacimiento > $fechaActual) {
-            echo "<p style='color:red;'>ERROR en la Información</p>";
-        } else {
-            if (crear_persona($rut, $nombre, $apellido, $fecha_nacimiento, $telefono, $mail, $usuario, $contraseña, $archivo_nuevo, $adicional, $personaje)) {
-                echo "<meta http-equiv='refresh' content='0;url=index.php'>";
-              
-                exit();
-            } else {
-                echo "<p style='color:red;'>Error al registrar la persona</p>";
-            }
-        }
+    // Usar una consulta preparada para evitar SQL Injection
+    $sql = "SELECT usuario FROM cerebro_de_rick WHERE usuario=?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    // Verificar si hay filas en el resultado
+    if ($resultado->num_rows > 0) {
+        return false;
+    } else {
+        return true;
     }
 }
 
-function verificar(){
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["usuario"])) {
-            $usuario = $_POST["usuario"];
 
-            require_once("conn_ciudadela.php");
-            global $conexion;
-            $sql = "SELECT usuario FROM cerebro_de_rick WHERE usuario=?";
-            $stmt = $conexion->prepare($sql);
-            $stmt->bind_param('s', $usuario);
-            $stmt->execute();
-            $resultado = $stmt->get_result();
-            
-            if ($resultado->num_rows > 0) {
-                $stmt->close();
-                echo "<h4 style='color:red;'>Este Usuario ya Existe</h4>";
-            } else {
-                $stmt->close();
-            }
-        }
-    }
-}
 
 function verificar_rut($rut){
     $rut = preg_replace('/[\s\-]/', '', $rut);

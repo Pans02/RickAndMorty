@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rick and Morty</title>
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <?php
         $numeros_random = array();
@@ -29,25 +29,6 @@
             width: 1500px;
             height: 0px;
             float: left;
-        }
-
-        .titulo{
-
-            font-size: 3rem;
-            text-shadow: 0 0 15px #ffff00;
-            color: #00ffff;
-            font-family: 'Delicious Handrawn', cursive;
-            animation: title 1s infinite;
-            margin: 0px 0px 0px 245px
-
-        }
-
-        @keyframes title{
-            50%{
-                text-shadow: 0 0 15px #00ffff;
-                color: #ffff00;
-            }
-
         }
 
         .navbar-nav {
@@ -116,8 +97,8 @@
 
         .cuerpo_b {
             min-width: 100%; 
-            height: 1145px; 
-            margin: 0px 0px 0px 0px;
+            height: 1000px; 
+            margin:-5px 0px 0px 0px;
             float: left;
             background: #A9DFBF;
             background: linear-gradient(to right, #00FF00, #FFD700);
@@ -184,7 +165,7 @@
         .botones{
             width:290px;
             height:50px;
-            margin: 30px 0px 20px 630px;
+            margin: 0px 0px 20px 630px;
             float:left;
         }
         
@@ -203,42 +184,29 @@
 <body>
 
     <div class="contenedor">
-    <br><br>
     <div id="ribbon">
     <!-- Navbar de Bootstrap -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="background: #A9DFBF;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
+        style="background: #A9DFBF;">
         <div class="container">
-            <a class="navbar-brand" href="https://rickandmortyapi.com/" target="_blank">
-                <img src="https://cesar959.github.io/rick-and-morty/img/logo.png" alt="Rick and Morty Logo" style="height: 65px; width: auto;">
+        <a class="navbar-brand" href="https://rickandmortyapi.com/" target="_blank">
+                <img src="https://cesar959.github.io/rick-and-morty/img/logo.png" alt="Rick and Morty Logo"
+                    style="height: 40px; width: auto;">
             </a>
-                <div class = "titulo"> Rick And Morty News</div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index_rick.php">Inicio</a>
+                        <a class="nav-link" href="index.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="identidad.php">Mi Perfil</a>
+                        <a class="nav-link" href="Registro.php">Registrarse</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tabla.php">Ver Tabla de Datos</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ejercicios
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="Problema1.php">Problema 1</a></li>
-                            <li><a class="dropdown-item" href="Problema2.php">Problema 2</a></li>
-                            <li><a class="dropdown-item" href="Problema3.php">Problema 3</a></li>
-                            <li><a class="dropdown-item" href="Problema4.php">Problema 4</a></li>
-                            <li><a class="dropdown-item" href="Problema5.php">Problema 5</a></li>
-                            <li><a class="dropdown-item" href="Problema6.php">Problema 6</a></li><br>
-                            <li><a class="dropdown-item" href="index.php">Cerrar Sesion</a></li>
-                        </ul>
+                        <a class="nav-link" href="Login.php">Iniciar sesión</a>
                     </li>
                 </ul>
             </div>
@@ -269,7 +237,9 @@
             </div>
         </div>
 
-        <div class="cuerpo">     
+        <div class="cuerpo">
+            
+           
 
             <div class="personajes">
                 <?php
@@ -458,139 +428,71 @@
         </div>
 
         <div class = "cuerpo_b">
-                <h2><center><p>Noticias</p></center></h2>
-
-            <?php
-                require_once("conn_ciudadela.php");
-                $sql = "SELECT id, titulo, resumen, link, img FROM noticias_de_rick WHERE id=1";
-                $resultado = $conexion->query($sql);
-                echo "<br>";
-
-            ?>
+                            <h2><center><p>Noticias</p></center></h2>
 
                 <div class = "general-noticia">
 
-                    <center><h5 style="color:white;"> <?php 
-                    while ($fila = $resultado->fetch_assoc()) {
-                        echo $fila['titulo'];
-                    ?></h5></center>
+                    <<center><h5><a href="https://www.mdzol.com/napsix/2023/12/29/no-creeras-como-serian-rick-morty-en-la-vida-real-segun-la-inteligencia-artificial-395356.html">No creerás cómo serían Rick y Morty en la vida real</a></h5></center>
                         <div class = "general-img">
-                            <img src="<?php echo $fila['img']; ?>" width="100%" height="360px" border-radius = "10px" alt="Descripción de la imagen">
+                            <img src="https://www.mdzol.com/u/fotografias/m/2023/12/29/f1456x819-1529777_1700147_5050.png" width="100%" height="360px" border-radius = "10px" alt="Descripción de la imagen">
               
                         </div>
 
                         <div class = "general-texto">
-                            <p><h4><?php echo $fila['resumen'];  ?></h4>
-                            <?php
-                                $qrData = "Link: " . $fila['link'] . "\n";    
 
-                                $qr = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrData) . "&size=300x300&ecc=L";
-                                echo '<img src="' . $qr . '" alt="Código QR" style="margin:0px 0px 0px 50px; width:150px; height:150px;">';
-                            }
-
-                            ?>
-                        </p>
+                            <p><h2>Los internautas le pidieron a Midjourney crear imágenes con las versiones más reales posibles de los míticos personajes animados.</h2></p>
                         </div>
                        
                 </div>
-                <?php
-                    require_once("conn_ciudadela.php");
-                    $sql = "SELECT id, titulo, resumen, link, img FROM noticias_de_rick WHERE id=2";
-                    $resultado = $conexion->query($sql);
-                echo "<br>";
-                ?>
-                <div class = "general-noticia" style="margin: 5px -20px 50px 115px;">
-                <center><h6 style="color:white;"> <?php 
-                    while ($fila = $resultado->fetch_assoc()) {
-                        echo $fila['titulo'];
-                    ?></6></center>
+
+                <div class = "general-noticia">
+                        <center><h5><a href="https://comicbook.com/anime/news/rick-and-morty-seson-7-improv-ian-cardoni-interview/">El nuevo actor de Rick revela cuánta improvisación hubo en la temporada 7.</a></h5></center>
                         <div class = "general-img">
-                            <img src="<?php echo $fila['img']; ?>" width="100%" height="360px" border-radius = "10px" alt="Descripción de la imagen">
-            
+                            <img src="https://sportshub.cbsistatic.com/i/2023/12/18/aefd4076-eeb3-4825-b9f8-ba0771338769/rick-and-morty-season-7-adult-morty-grows-up.jpg?auto=webp&width=1200&height=675&crop=1.778:1,smart" width="100%" height="360px" alt="Descripción de la imagen">
+              
                         </div>
 
                         <div class = "general-texto">
-                            <p><h4><?php echo $fila['resumen'];  ?></h4>
-                            <?php
-                                $qrData = "Link: " . $fila['link'] . "\n";    
 
-                                $qr = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrData) . "&size=300x300&ecc=L";
-                                echo '<img src="' . $qr . '" alt="Código QR" style="margin:0px 0px 0px 50px; width:150px; height:150px;">';
-                            }
+                            <p><h2>¡Ian Cardoni de Rick y Morty habló sobre cuánta improvisación hubo en los episodios de la temporada 7!</h2></p>
+                        </div>
 
-                            ?>
-                        </p>
+
+                </div>
+
+      
+                <div class = "general-noticia">
+                        <center><h5><a href="https://comicbook.com/anime/news/rick-and-morty-harry-belden-evil-morty-interview/">El nuevo actor de Morty reacciona a ser el malvado Morty</a></h5></center>
+                        <div class = "general-img">
+                            <img src="https://sportshub.cbsistatic.com/i/2023/11/13/e434e3ca-96a3-43c2-898e-853bd37b1c53/rick-and-morty-season-7-evil-morty-origin.jpg?auto=webp&width=1200&height=675&crop=1.778:1,smart" width="100%" height="360px" alt="Descripción de la imagen">
+              
+                        </div>
+
+                        <div class = "general-texto">
+
+                            <p><h2>El nuevo actor de voz de Rick y Morty, Harry Belden, compartió su reacción al interpretar a Evil Morty por primera vez.</h2></p>
                         </div>
                 </div>
 
-                <?php
-                    require_once("conn_ciudadela.php");
-                    $sql = "SELECT id, titulo, resumen, link, img FROM noticias_de_rick WHERE id=3";
-                    $resultado = $conexion->query($sql);
-                    echo "<br>";
-                ?>
                 <div class = "general-noticia">
-                <center><h5 style="color:white;"> <?php 
-                    while ($fila = $resultado->fetch_assoc()) {
-                        echo $fila['titulo'];
-                    ?></h5></center>
+                        <center><h5><a href="https://comicbook.com/anime/news/rick-and-morty-evil-summer-spencer-grammer-interview/">La estrella de Rick y Morty presenta la historia perfecta del verano malvado</a></h5></center>
                         <div class = "general-img">
-                            <img src="<?php echo $fila['img']; ?>" width="100%" height="360px" border-radius = "10px" alt="Descripción de la imagen">
-            
+                            <img src="https://sportshub.cbsistatic.com/i/2023/08/24/125a5b28-9054-47a2-bec5-a4a79d773314/rick-and-morty-season-7-preview-evil-summer.jpg?auto=webp&width=1200&height=628&crop=1.911:1,smart" width="100%" height="360px" alt="Descripción de la imagen">
+              
                         </div>
 
                         <div class = "general-texto">
-                            <p><h4><?php echo $fila['resumen'];  ?></h4>
-                            <?php
-                                $qrData = "Link: " . $fila['link'] . "\n";    
 
-                                $qr = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrData) . "&size=300x300&ecc=L";
-                                echo '<img src="' . $qr . '" alt="Código QR" style="margin:0px 0px 0px 50px; width:150px; height:150px;">';
-                            }
-
-                            ?>
-                        </p>
-                        </div>
-                </div>
-                <?php
-                    require_once("conn_ciudadela.php");
-                    $sql = "SELECT id, titulo, resumen, link, img FROM noticias_de_rick WHERE id=4";
-                    $resultado = $conexion->query($sql);
-                    echo "<br>";
-                ?>
-                <div class = "general-noticia">
-                     <center><h5 style="color:white;"> <?php 
-                    while ($fila = $resultado->fetch_assoc()) {
-                        echo $fila['titulo'];
-                    ?></h5></center>
-                        <div class = "general-img">
-                            <img src="<?php echo $fila['img']; ?>" width="100%" height="360px" border-radius = "10px" alt="Descripción de la imagen">
-            
+                            <p><h2>¡Spencer Grammer de Rick y Morty tiene grandes ideas para los episodios de Evil Summer!</h2></p>
                         </div>
 
-                        <div class = "general-texto">
-                            <p><h4><?php echo $fila['resumen'];  ?></h4>
-                            <?php
-                                $qrData = "Link: " . $fila['link'] . "\n";    
+        
 
-                                $qr = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrData) . "&size=300x300&ecc=L";
-                                echo '<img src="' . $qr . '" alt="Código QR" style="margin:0px 0px 0px 50px; width:150px; height:150px;">';
-                    }
-
-                            ?>
-                        </p>
-                        </div>
                 </div>
                 <div class="botones">
-                <button type="button" class="btn btn-dark" onclick="irAFormulario('Formulario_noticia.php')">Ingresar</button>
-                <button type="button" class="btn btn-dark" onclick="irAFormulario('Formulario_noticia.php')">Modificar</button>
-                <button type="button" class="btn btn-dark" onclick="irAFormulario('eliminar_e_noticia.php')">Eliminar</button>
-
-                <script>
-                    function irAFormulario(pagina) {
-                        window.location.href = pagina;
-                    }
-                </script>
+                    <button type="button" class="btn btn-dark">Ingresar</button>
+                    <button type="button" class="btn btn-dark">Modificar</button>
+                    <button type="button" class="btn btn-dark">Eliminar</button>
                 </div>
         
         </div>
@@ -602,8 +504,7 @@
 
     </div>
 
-<!-- JavaScript de Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    
- 
+    <!-- JavaScript de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

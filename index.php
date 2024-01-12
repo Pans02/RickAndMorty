@@ -19,7 +19,7 @@
 
         .contenedor {
             min-width: 100%;
-            height: 2868px;
+            height: 3020px;
             background: #A9DFBF;
             background: linear-gradient(to right, #00FF00, #FFD700);
             border: 2px solid black; 
@@ -248,13 +248,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://p3.no/filmpolitiet/wp-content/uploads/2021/06/S05RickandMorty.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
                         <img src="https://www.nme.com/wp-content/uploads/2022/10/Rick_And_Morty_Portal_Gun_JuRicksic_Mort.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="https://www.nme.com/wp-content/uploads/2021/06/rick-and-morty-s5-cold-open.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://p3.no/filmpolitiet/wp-content/uploads/2021/06/S05RickandMorty.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -589,6 +589,7 @@
 
     </div>
 
-    
+    <!-- JavaScript de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
