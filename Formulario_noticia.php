@@ -74,7 +74,32 @@
                             <button type="submit" class="btn btn-primary">Ingresar noticia</button>
                         </div>
                     </form>
-                    <a href="Formulario_noticias.php" style="margin:0px 0px 0px 240px;">Volver al Inicio</a>
+                    <?php
+                    require_once("conn_ciudadela.php");
+                    global $conexion;
+                    $sql = "SELECT * FROM registros_de_morty ORDER BY id DESC LIMIT 1";
+                    $resultado_ultimo_registro = mysqli_query($conexion, $sql);
+
+                    if ($resultado_ultimo_registro->num_rows > 0) {
+                        while ($ultimo_registro = $resultado_ultimo_registro->fetch_assoc()) {
+                            $usuario = $ultimo_registro['usuario'];
+
+                            $sql_cerebro = "SELECT * FROM cerebro_de_rick WHERE usuario='$usuario'";
+                            $resultado_cerebro = mysqli_query($conexion, $sql_cerebro);
+
+                            if ($resultado_cerebro->num_rows > 0) {
+                                while ($cerebro_registro = $resultado_cerebro->fetch_assoc()) {
+                                    if ($cerebro_registro["rol"] == "MORTY") {
+                                        echo "<a href='index_morty.php' style='margin:0px 0px 0px 240px'>Volver al Inicio</a>";
+                                    } else {
+                                        echo "<a href='index_rick.php'>Volver al Inicio</a>";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>

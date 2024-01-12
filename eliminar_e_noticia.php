@@ -91,8 +91,8 @@ function eliminarNoticia($id)
     $archivo = isset($_POST["archivo"]) ? $_POST["archivo"] : "";
 
     $sql = "DELETE FROM noticias WHERE id = '$id'; ";
-
     $resultado = $conexion->query($sql);
+    
     if ($resultado) {
         require_once("conn_ciudadela.php");
         $sql_ultimo_registro = "SELECT * FROM registros_de_morty ORDER BY id DESC LIMIT 1";
