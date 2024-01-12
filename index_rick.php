@@ -458,7 +458,7 @@
         </div>
 
         <div class = "cuerpo_b">
-                <h2><center><p>Noticias</p></center></h2>
+        <div class = "titulo" style="margin: 0px 0px 0px 675px;"> Noticias</div>
 
             <?php
                 require_once("conn_ciudadela.php");
