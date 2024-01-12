@@ -135,7 +135,6 @@
         require_once("conn_ciudadela.php");
         global $conexion;
 
-        // Procesar el formulario si se ha enviado
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $rut = $_POST["rut"];
             $nombre = $_POST["nombre"];
@@ -151,7 +150,6 @@
             $fechaActual = new DateTime();
             $fechaActual = $fechaActual->format('Y-m-d');
 
-            // Llamar a la función verificar antes de procesar el formulario
             if (!verificar($usuario)) {
                 echo "<h5 style='color:red;margin:0px 0px 0px 700px'>Error: Este Usuario ya Existe</h5>";
             } elseif (!empty($rut) && !empty($nombre) && !empty($apellido) && !empty($fecha_nacimiento) && !empty($telefono) && !empty($mail) && !empty($usuario) && !empty($contraseña) && !empty($foto) && !empty($adicional) && !empty($personaje)) {
@@ -181,7 +179,6 @@ function verificar($usuario) {
     require_once("conn_ciudadela.php");
     global $conexion;
 
-    // Usar una consulta preparada para evitar SQL Injection
     $sql = "SELECT usuario FROM cerebro_de_rick WHERE usuario=?";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("s", $usuario);
