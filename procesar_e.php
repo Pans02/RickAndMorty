@@ -14,7 +14,6 @@ function EliminarBD($titulo){
     }
 }
 
-#recuperacion de datos del formulario
 $titulo = $_POST["titulo"];
 
 
