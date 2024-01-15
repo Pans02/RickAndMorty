@@ -106,7 +106,7 @@
                                 $tiempo = $_POST["segundos"];
                                 $Vi=($altura+4.9*($tiempo**2))/$tiempo;
                                 $Vi = number_format($Vi, 2);
-                                $Vf=$Vi*-1;
+                                $Vf=$Vi+(-9.8)*$tiempo;
                                 echo"a)<br><p>La Velocidad Inicial con que se lanzan las llaves es de: $Vi metros/segundos</p>";
                                 echo"a)<br><p>La Velocidad Final justo antes de caer las llaves es de: $Vf metros/segundos</p>";
                             }
